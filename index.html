@@ -13,16 +13,14 @@
 :root{--ink:#080C10;--deep:#0E1520;--panel:#121B28;--border:rgba(180,150,80,0.18);--gold:#C9A84C;--gold2:#E8C97A;--gold3:rgba(201,168,76,0.12);--silver:#94A3B8;--white:#F0EDE8;--dim:rgba(240,237,232,0.5);--glass:rgba(255,255,255,0.04);--r:16px;--ease:cubic-bezier(.22,1,.36,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--white);overflow-x:hidden;cursor:none}
+body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--white);overflow-x:hidden;}
 h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
-button{cursor:none;font-family:'Outfit',sans-serif}
+button{font-family:'Outfit',sans-serif;}
 input,select,textarea{font-family:'Outfit',sans-serif}
 
-/* Cursor */
-#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease)}
-#curR{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,168,76,.5);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease)}
+
 
 /* Noise overlay */
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.35}
@@ -210,8 +208,7 @@ footer{background:var(--deep);padding:2.5rem 0;border-top:1px solid var(--border
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="curR"></div>
+
 <div class="prog" id="prog"></div>
 
 <!-- NAV -->
@@ -420,16 +417,6 @@ footer{background:var(--deep);padding:2.5rem 0;border-top:1px solid var(--border
 
 <script>
 /* AbogadosMX — JS · Jonathan Mizraim Olvera Díaz · Grupo 801 */
-
-// Custom cursor
-const cur=document.getElementById('cur'),curR=document.getElementById('curR');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
-(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('a,button,.card,.hst').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';curR.style.width='50px';curR.style.height='50px'});
-  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';curR.style.width='36px';curR.style.height='36px'});
-});
 
 // Scroll progress + nav
 window.addEventListener('scroll',()=>{
@@ -703,7 +690,6 @@ document.addEventListener('mousemove', e => {
 <style>
 #owl{
   position:fixed;bottom:0;left:2.5rem;z-index:700;
-  cursor:none;
   animation:owlBob 3s ease-in-out infinite;
   filter:drop-shadow(0 6px 20px rgba(201,168,76,0.3));
   display:flex;flex-direction:column;align-items:center;
