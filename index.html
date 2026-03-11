@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AbogadosMX — Directorio Legal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════
+   ABOGADOSMX — Premium Dark Editorial Design
+   Jonathan Mizraim Olvera Díaz · Grupo 801
+═══════════════════════════════════════════ */
+:root{--ink:#080C10;--deep:#0E1520;--panel:#121B28;--border:rgba(180,150,80,0.18);--gold:#C9A84C;--gold2:#E8C97A;--gold3:rgba(201,168,76,0.12);--silver:#94A3B8;--white:#F0EDE8;--dim:rgba(240,237,232,0.5);--glass:rgba(255,255,255,0.04);--r:16px;--ease:cubic-bezier(.22,1,.36,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Outfit',sans-serif;background:var(--ink);color:var(--white);overflow-x:hidden;cursor:none}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button{cursor:none;font-family:'Outfit',sans-serif}
+input,select,textarea{font-family:'Outfit',sans-serif}
+
+/* Cursor */
+#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease)}
+#curR{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid rgba(201,168,76,.5);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease)}
+
+/* Noise overlay */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.35}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 2rem;position:relative;z-index:2}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:1.4rem 0;transition:background .4s var(--ease),padding .4s var(--ease)}
+.nav.scrolled{background:rgba(8,12,16,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.85rem 0;border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1160px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:2rem}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo-icon{font-size:1.2rem;color:var(--gold)}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;letter-spacing:.03em}
+.logo-name em{color:var(--gold);font-style:normal}
+.logo-tag{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--silver);border-left:1px solid var(--border);padding-left:.6rem;display:none}
+@media(min-width:900px){.logo-tag{display:block}}
+.nav-links{display:flex;gap:2rem;margin-left:auto}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:transparent;color:var(--gold);border:1px solid rgba(201,168,76,.4);padding:.48rem 1.4rem;border-radius:3px;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .3s var(--ease)}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+.nav-burger{display:none;background:none;border:none;color:var(--white);font-size:1.4rem}
+.mob-nav{display:none;flex-direction:column;gap:.5rem;background:rgba(8,12,16,.97);padding:1rem 2rem;border-top:1px solid var(--border)}
+.mob-nav.open{display:flex}
+.mob-nav a{font-size:.9rem;color:var(--dim);padding:.5rem 0;letter-spacing:.06em}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--ink)}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+.o1{width:650px;height:650px;right:-120px;top:50%;transform:translateY(-50%);background:radial-gradient(circle,rgba(201,168,76,.14) 0%,transparent 70%);animation:of1 12s ease-in-out infinite}
+.o2{width:420px;height:420px;left:-80px;bottom:-60px;background:radial-gradient(circle,rgba(30,60,120,.28) 0%,transparent 70%);animation:of2 16s ease-in-out infinite}
+.o3{width:260px;height:260px;left:42%;top:8%;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 70%);animation:of3 10s ease-in-out infinite 3s}
+@keyframes of1{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-54%)}}
+@keyframes of2{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-20px)}}
+@keyframes of3{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+
+.hero-inner{padding:8rem 0 4rem;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:.8rem;margin-bottom:2rem;animation:rU .8s var(--ease) both}
+.ey-line{width:40px;height:1px;background:var(--gold)}
+.ey-txt{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+.hero-title{font-size:clamp(3.2rem,8vw,7.5rem);font-weight:300;line-height:1.02;letter-spacing:-.02em;margin-bottom:1.5rem;animation:rU .9s var(--ease) .1s both}
+.hero-title .it{font-style:italic;color:var(--gold)}
+.hero-title .bl{display:block}
+.hero-sub{font-size:.98rem;color:var(--dim);max-width:440px;line-height:1.85;margin-bottom:3rem;font-weight:300;animation:rU .9s var(--ease) .2s both}
+.hero-acts{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;animation:rU .9s var(--ease) .3s both}
+.btn-gold{background:var(--gold);color:var(--ink);border:none;padding:.88rem 2.2rem;font-weight:700;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;transition:all .3s var(--ease)}
+.btn-gold:hover{background:var(--gold2);box-shadow:0 0 40px rgba(201,168,76,.3);transform:translateY(-2px)}
+.btn-ghost{background:none;color:var(--white);border:none;display:flex;align-items:center;gap:.6rem;font-size:.86rem;font-weight:500;letter-spacing:.06em;transition:color .3s}
+.btn-ghost:hover{color:var(--gold)}
+.arr{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .3s var(--ease)}
+.btn-ghost:hover .arr{border-color:var(--gold);transform:rotate(45deg)}
+.hero-stats{display:flex;margin-top:5rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);animation:rU .9s var(--ease) .4s both}
+.hst{flex:1;padding:1.5rem 0;border-right:1px solid var(--border);position:relative;overflow:hidden}
+.hst:last-child{border-right:none}
+.hst::before{content:'';position:absolute;inset:0;background:var(--gold3);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.hst:hover::before{transform:scaleX(1)}
+.hst-in{position:relative;z-index:1;padding:0 1.5rem}
+.hst-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:var(--gold);line-height:1}
+.hst-l{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);margin-top:.3rem}
+@keyframes rU{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION COMMON ── */
+.sec{padding:7rem 0}
+.sec-head{margin-bottom:4rem}
+.sec-lbl{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem}
+.lbl-n{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(201,168,76,.45);font-weight:300}
+.lbl-line{width:30px;height:1px;background:var(--border)}
+.lbl-txt{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--silver)}
+.sec-ttl{font-size:clamp(2rem,5vw,3.8rem);font-weight:300;line-height:1.1;letter-spacing:-.01em}
+.sec-ttl em{font-style:italic;color:var(--gold)}
+
+/* ── FILTER TABS ── */
+.tabs{display:flex;border:1px solid var(--border);border-radius:4px;width:fit-content;margin-bottom:3rem;overflow:hidden}
+.tab{padding:.58rem 1.5rem;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;color:var(--silver);transition:all .25s}
+.tab.on{background:var(--gold);color:var(--ink)}
+.tab:not(.on):hover{color:var(--white);background:rgba(255,255,255,.04)}
+
+/* ── CARDS ── */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border)}
+.card{background:var(--panel);padding:2rem;position:relative;overflow:hidden;transition:transform .4s var(--ease);opacity:0;transform:translateY(20px)}
+.card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+.card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .5s var(--ease)}
+.card:hover{transform:translateY(-4px)}
+.card:hover::before{opacity:1}
+.card:hover::after{transform:scaleX(1)}
+.card.vis{animation:cIn .6s var(--ease) both}
+@keyframes cIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card-type{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+.card-type::before{content:'';width:20px;height:1px;background:var(--gold);opacity:.5}
+.card-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;margin-bottom:1rem;border:1px solid var(--border);background:var(--deep);color:var(--gold)}
+.card-name{font-size:1.15rem;font-weight:600;line-height:1.2;margin-bottom:.3rem}
+.card-spec{font-size:.76rem;color:var(--silver);margin-bottom:1rem;letter-spacing:.04em}
+.stars{display:flex;gap:3px;margin-bottom:.4rem}
+.s{font-size:1rem;color:rgba(255,255,255,.12);transition:color .2s,transform .2s}
+.s.on{color:var(--gold)}
+.s:hover{transform:scale(1.2)}
+.score{font-size:.76rem;color:var(--silver)}
+.card-quote{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--dim);font-style:italic;line-height:1.75}
+.card-btn{margin-top:1.2rem;background:none;border:1px solid var(--border);color:var(--silver);padding:.5rem 1.2rem;border-radius:3px;font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;transition:all .3s var(--ease);width:100%}
+.card-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold3)}
+
+/* ── REGISTRO ── */
+.reg-sec{padding:7rem 0;background:var(--deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.reg-sec::before{content:'REGISTRO';position:absolute;right:-3rem;top:50%;transform:translateY(-50%);font-family:'Cormorant Garamond',serif;font-size:clamp(7rem,14vw,17rem);font-weight:700;color:rgba(201,168,76,.025);letter-spacing:-.05em;pointer-events:none;line-height:1;white-space:nowrap}
+.reg-lay{display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start}
+.reg-info h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;line-height:1.1;margin-bottom:1.5rem}
+.reg-info p{font-size:.9rem;color:var(--dim);line-height:1.85;margin-bottom:2rem}
+.reg-feats{display:flex;flex-direction:column;gap:.8rem}
+.rfeat{display:flex;align-items:flex-start;gap:1rem;padding:.9rem 1rem;border:1px solid var(--border);border-radius:4px;background:var(--glass);transition:border-color .3s}
+.rfeat:hover{border-color:rgba(201,168,76,.3)}
+.rfeat-ico{font-size:1.1rem;flex-shrink:0;margin-top:.15rem}
+.rfeat h4{font-size:.82rem;font-weight:600;margin-bottom:.15rem;letter-spacing:.04em}
+.rfeat p{font-size:.76rem;color:var(--silver)}
+.rtabs{display:flex;margin-bottom:2rem;border-bottom:1px solid var(--border)}
+.rtab{padding:.72rem 1.4rem;background:none;border:none;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--silver);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .25s}
+.rtab.on{color:var(--gold);border-bottom-color:var(--gold)}
+.fpanel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:2.5rem}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.fg{display:flex;flex-direction:column;gap:.4rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--silver);font-weight:600}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--white);border-radius:4px;padding:.72rem 1rem;font-size:.88rem;outline:none;transition:border-color .25s,background .25s}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.2)}
+.fg select option{background:var(--deep);color:var(--white)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);background:rgba(201,168,76,.05)}
+.fg input.err,.fg select.err,.fg textarea.err{border-color:#ef4444}
+.errmsg{font-size:.7rem;color:#f87171;min-height:.85rem}
+.fstars-wrap{display:flex;gap:5px}
+.fstar{font-size:1.6rem;color:rgba(255,255,255,.1);transition:color .15s,transform .15s}
+.fstar.on{color:var(--gold)}
+.fstar:hover{transform:scale(1.15)}
+.fstar-lbl{font-size:.76rem;color:var(--silver);margin-top:.35rem;min-height:.9rem}
+.hid-form{display:none}
+.sub-row{display:flex;justify-content:flex-end;margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid var(--border)}
+.btn-sub{background:var(--gold);color:var(--ink);border:none;padding:.85rem 2.5rem;font-weight:700;font-size:.83rem;letter-spacing:.08em;text-transform:uppercase;border-radius:3px;transition:all .3s var(--ease)}
+.btn-sub:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.25)}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--border);margin-top:3rem}
+.acard{background:var(--deep);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .3s}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .5s var(--ease)}
+.acard:hover{background:var(--panel)}
+.acard:hover::before{transform:scaleX(1)}
+.a-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:rgba(201,168,76,.12);font-weight:700;line-height:1;margin-bottom:.8rem}
+.a-ico{font-size:1.4rem;margin-bottom:.8rem}
+.acard h3{font-size:1.05rem;font-weight:600;margin-bottom:.5rem}
+.acard p{font-size:.8rem;color:var(--silver);line-height:1.75}
+
+/* ── FOOTER ── */
+footer{background:var(--deep);padding:2.5rem 0;border-top:1px solid var(--border)}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-copy{font-size:.73rem;color:var(--silver)}
+.foot-links{display:flex;gap:1.8rem}
+.foot-links a{font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;color:var(--silver);transition:color .25s}
+.foot-links a:hover{color:var(--gold)}
+
+/* ── MODAL ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:800;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(10px)}
+.overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:3rem;max-width:480px;width:90%;position:relative;transform:scale(.95) translateY(20px);transition:transform .4s var(--ease)}
+.overlay.open .modal{transform:scale(1) translateY(0)}
+.modal-x{position:absolute;top:1.2rem;right:1.2rem;background:none;border:none;color:var(--silver);font-size:1.2rem;transition:color .2s}
+.modal-x:hover{color:var(--white)}
+.modal-tag{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
+.modal-name{font-size:2rem;font-weight:300;margin-bottom:.4rem}
+.modal-esp{font-size:.8rem;color:var(--silver);margin-bottom:.8rem}
+.modal-stars{font-size:1.4rem;color:var(--gold);margin:.2rem 0}
+.modal-score{font-size:.82rem;color:var(--silver);margin-bottom:1rem}
+.modal-hr{width:40px;height:1px;background:var(--gold);opacity:.4;margin:1.4rem 0}
+.modal-desc{font-size:.86rem;color:var(--dim);line-height:1.82}
+.modal-note{font-size:.7rem;color:rgba(255,255,255,.22);margin-top:1.5rem}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:2rem;right:2rem;z-index:900;background:var(--panel);color:var(--white);border:1px solid var(--border);border-left:3px solid var(--gold);padding:1rem 1.5rem;border-radius:4px;font-size:.83rem;font-weight:500;transform:translateY(80px) scale(.95);opacity:0;transition:all .4s var(--ease);box-shadow:0 20px 40px rgba(0,0,0,.4);max-width:320px}
+#toast.show{transform:translateY(0) scale(1);opacity:1}
+
+/* ── SCROLL BAR ── */
+.prog{position:fixed;top:0;left:0;height:2px;background:var(--gold);width:0;z-index:600;transition:width .1s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}.about-grid{grid-template-columns:repeat(2,1fr)}.reg-lay{grid-template-columns:1fr;gap:3rem}.reg-sec::before{display:none}}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-burger{display:block}.grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr 1fr}.fgrid{grid-template-columns:1fr}.hero-stats{flex-direction:column}.hst{border-right:none;border-bottom:1px solid var(--border)}.hst:last-child{border-bottom:none}.hero-title{font-size:3rem}.foot{flex-direction:column;text-align:center}}
+@media(max-width:480px){.about-grid{grid-template-columns:1fr}.hero-title{font-size:2.4rem}.tabs{width:100%}.tab{flex:1;text-align:center}}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="curR"></div>
+<div class="prog" id="prog"></div>
+
+<!-- NAV -->
+<nav class="nav" id="navBar">
+  <div class="nav-inner">
+    <div class="logo">
+      <span class="logo-icon">⚖</span>
+      <span class="logo-name">Abogados<em>MX</em></span>
+      <span class="logo-tag">Directorio Legal</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#directorio">Directorio</a></li>
+      <li><a href="#registro">Registro</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+    </ul>
+    <button class="nav-cta" onclick="goto('#registro')">Registrarse</button>
+    <button class="nav-burger" onclick="toggleNav()">☰</button>
+  </div>
+  <div class="mob-nav" id="mobNav">
+    <a href="#inicio" onclick="toggleNav()">Inicio</a>
+    <a href="#directorio" onclick="toggleNav()">Directorio</a>
+    <a href="#registro" onclick="toggleNav()">Registro</a>
+    <a href="#nosotros" onclick="toggleNav()">Nosotros</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow"><span class="ey-line"></span><span class="ey-txt">Directorio Legal #1 en México</span></div>
+    <h1 class="hero-title">
+      <span class="bl">Encuentra al</span>
+      <span class="bl it">abogado</span>
+      <span class="bl">que necesitas.</span>
+    </h1>
+    <p class="hero-sub">Registra, consulta y evalúa bufetes de abogados y profesionales independientes. Información transparente para tomar la mejor decisión legal.</p>
+    <div class="hero-acts">
+      <button class="btn-gold" onclick="goto('#directorio')">Ver Directorio</button>
+      <button class="btn-ghost" onclick="goto('#registro')"><span class="arr">→</span>Registrar bufete</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hst"><div class="hst-in"><div class="hst-n" data-t="120" data-s="+">0+</div><div class="hst-l">Abogados registrados</div></div></div>
+      <div class="hst"><div class="hst-in"><div class="hst-n" data-t="45" data-s="+">0+</div><div class="hst-l">Bufetes activos</div></div></div>
+      <div class="hst"><div class="hst-in"><div class="hst-n" data-t="98" data-s="%">0%</div><div class="hst-l">Índice de satisfacción</div></div></div>
+      <div class="hst"><div class="hst-in"><div class="hst-n" data-t="7" data-s=" años">0 años</div><div class="hst-l">Experiencia promedio</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTORIO -->
+<section class="sec" id="directorio">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-lbl"><span class="lbl-n">01</span><span class="lbl-line"></span><span class="lbl-txt">Directorio</span></div>
+      <h2 class="sec-ttl">Profesionales <em>destacados</em></h2>
+    </div>
+    <div class="tabs">
+      <button class="tab on" onclick="filtrar('todos',this)">Todos</button>
+      <button class="tab" onclick="filtrar('bufete',this)">Bufetes</button>
+      <button class="tab" onclick="filtrar('independiente',this)">Independientes</button>
+    </div>
+    <div class="grid" id="grd">
+      <div class="card" data-tipo="bufete">
+        <div class="card-type">Bufete de Abogados</div><div class="card-av">GR</div>
+        <h3 class="card-name">García & Rodríguez Abogados</h3><p class="card-spec">Derecho Civil · Mercantil · Contratos</p>
+        <div class="stars" data-id="c1"><span class="s on" data-v="1">★</span><span class="s on" data-v="2">★</span><span class="s on" data-v="3">★</span><span class="s on" data-v="4">★</span><span class="s" data-v="5">★</span></div>
+        <div class="score" id="sc-c1">4.5 / 5.0</div>
+        <p class="card-quote">"Excelente atención y resultados. Muy profesionales en todo momento."</p>
+        <button class="card-btn" onclick="openModal('bufete','García & Rodríguez Abogados',4.5,'Derecho Civil · Mercantil')">Ver perfil completo</button>
+      </div>
+      <div class="card" data-tipo="independiente">
+        <div class="card-type">Abogado Independiente</div><div class="card-av">LM</div>
+        <h3 class="card-name">Lic. Laura Mendoza Torres</h3><p class="card-spec">Derecho Familiar · Laboral</p>
+        <div class="stars" data-id="c2"><span class="s on" data-v="1">★</span><span class="s on" data-v="2">★</span><span class="s on" data-v="3">★</span><span class="s on" data-v="4">★</span><span class="s on" data-v="5">★</span></div>
+        <div class="score" id="sc-c2">5.0 / 5.0</div>
+        <p class="card-quote">"La mejor abogada de familia. Resolvió mi caso con empatía y precisión."</p>
+        <button class="card-btn" onclick="openModal('independiente','Lic. Laura Mendoza Torres',5.0,'Derecho Familiar · Laboral')">Ver perfil completo</button>
+      </div>
+      <div class="card" data-tipo="bufete">
+        <div class="card-type">Bufete de Abogados</div><div class="card-av">HL</div>
+        <h3 class="card-name">Herrera, López & Asociados</h3><p class="card-spec">Derecho Penal · Constitucional</p>
+        <div class="stars" data-id="c3"><span class="s on" data-v="1">★</span><span class="s on" data-v="2">★</span><span class="s on" data-v="3">★</span><span class="s on" data-v="4">★</span><span class="s" data-v="5">★</span></div>
+        <div class="score" id="sc-c3">4.0 / 5.0</div>
+        <p class="card-quote">"Buenos abogados, proceso claro y comunicación constante durante el juicio."</p>
+        <button class="card-btn" onclick="openModal('bufete','Herrera, López & Asociados',4.0,'Derecho Penal · Constitucional')">Ver perfil completo</button>
+      </div>
+      <div class="card" data-tipo="independiente">
+        <div class="card-type">Abogado Independiente</div><div class="card-av">CF</div>
+        <h3 class="card-name">Lic. Carlos Fuentes Jiménez</h3><p class="card-spec">Derecho Fiscal · Corporativo</p>
+        <div class="stars" data-id="c4"><span class="s on" data-v="1">★</span><span class="s on" data-v="2">★</span><span class="s on" data-v="3">★</span><span class="s on" data-v="4">★</span><span class="s on" data-v="5">★</span></div>
+        <div class="score" id="sc-c4">4.8 / 5.0</div>
+        <p class="card-quote">"Manejo impecable de mis asuntos fiscales. Totalmente recomendado."</p>
+        <button class="card-btn" onclick="openModal('independiente','Lic. Carlos Fuentes Jiménez',4.8,'Derecho Fiscal · Corporativo')">Ver perfil completo</button>
+      </div>
+      <div class="card" data-tipo="bufete">
+        <div class="card-type">Bufete de Abogados</div><div class="card-av">VS</div>
+        <h3 class="card-name">Villanueva Soto Abogados</h3><p class="card-spec">Derechos Humanos · Amparo</p>
+        <div class="stars" data-id="c5"><span class="s on" data-v="1">★</span><span class="s on" data-v="2">★</span><span class="s on" data-v="3">★</span><span class="s on" data-v="4">★</span><span class="s on" data-v="5">★</span></div>
+        <div class="score" id="sc-c5">4.7 / 5.0</div>
+        <p class="card-quote">"Defienden con convicción. Muy dedicados a cada caso."</p>
+        <button class="card-btn" onclick="openModal('bufete','Villanueva Soto Abogados',4.7,'Derechos Humanos · Amparo')">Ver perfil completo</button>
+      </div>
+      <div class="card" data-tipo="independiente">
+        <div class="card-type">Abogado Independiente</div><div class="card-av">AR</div>
+        <h3 class="card-name">Lic. Ana Reyes Morales</h3><p class="card-spec">Derecho Inmobiliario · Notarial</p>
+        <div class="stars" data-id="c6"><span class="s on" data-v="1">★</span><span class="s on" data-v="2">★</span><span class="s on" data-v="3">★</span><span class="s" data-v="4">★</span><span class="s" data-v="5">★</span></div>
+        <div class="score" id="sc-c6">3.5 / 5.0</div>
+        <p class="card-quote">"Conoce muy bien el proceso notarial. Asesoría clara y precisa en escrituración."</p>
+        <button class="card-btn" onclick="openModal('independiente','Lic. Ana Reyes Morales',3.5,'Derecho Inmobiliario · Notarial')">Ver perfil completo</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRO -->
+<section class="reg-sec" id="registro">
+  <div class="wrap">
+    <div class="reg-lay">
+      <div class="reg-info">
+        <div class="sec-lbl" style="margin-bottom:1rem"><span class="lbl-n">02</span><span class="lbl-line"></span><span class="lbl-txt">Registro</span></div>
+        <h2>Forma parte del<br/><em style="color:var(--gold);font-style:italic">directorio</em></h2>
+        <p>Registra tu bufete o perfil profesional y llega a más clientes. La información es organizada y presentada de manera transparente.</p>
+        <div class="reg-feats">
+          <div class="rfeat"><span class="rfeat-ico">⚖</span><div><h4>Registro gratuito</h4><p>Sin costo para publicar tu perfil en el directorio.</p></div></div>
+          <div class="rfeat"><span class="rfeat-ico">★</span><div><h4>Sistema de calificaciones</h4><p>Evaluaciones de 1 a 5 estrellas verificadas por usuarios.</p></div></div>
+          <div class="rfeat"><span class="rfeat-ico">📱</span><div><h4>Perfil responsivo</h4><p>Tu información visible desde cualquier dispositivo.</p></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="rtabs">
+          <button class="rtab on" onclick="switchTab('b',this)">⚖ Bufete</button>
+          <button class="rtab" onclick="switchTab('i',this)">👤 Independiente</button>
+        </div>
+        <!-- FORM BUFETE -->
+        <form class="fpanel" id="fB" onsubmit="sub(event,'b')">
+          <div class="fgrid">
+            <div class="fg"><label>Nombre del Bufete *</label><input id="b1" type="text" placeholder="García & Asociados" required/><span class="errmsg" id="e-b1"></span></div>
+            <div class="fg"><label>Especialidad *</label><select id="b2" required><option value="">Seleccionar...</option><option>Derecho Civil</option><option>Derecho Penal</option><option>Derecho Familiar</option><option>Derecho Laboral</option><option>Derecho Fiscal</option><option>Derecho Mercantil</option><option>Derecho Corporativo</option><option>Derechos Humanos</option><option>Derecho Inmobiliario</option></select><span class="errmsg" id="e-b2"></span></div>
+            <div class="fg"><label>Ciudad *</label><input id="b3" type="text" placeholder="Ciudad de México" required/><span class="errmsg" id="e-b3"></span></div>
+            <div class="fg"><label>Teléfono *</label><input id="b4" type="tel" placeholder="10 dígitos" pattern="[0-9]{10}" required/><span class="errmsg" id="e-b4"></span></div>
+            <div class="fg"><label>Correo electrónico *</label><input id="b5" type="email" placeholder="contacto@bufete.com" required/><span class="errmsg" id="e-b5"></span></div>
+            <div class="fg"><label>N.º de abogados</label><input id="b6" type="number" min="1" placeholder="5"/></div>
+            <div class="fg full"><label>Descripción *</label><textarea id="b7" rows="3" placeholder="Describe los servicios..." required></textarea><span class="errmsg" id="e-b7"></span></div>
+            <div class="fg full"><label>Tu calificación *</label><div class="fstars-wrap" id="fsB"><span class="fstar" data-v="1">★</span><span class="fstar" data-v="2">★</span><span class="fstar" data-v="3">★</span><span class="fstar" data-v="4">★</span><span class="fstar" data-v="5">★</span></div><div class="fstar-lbl" id="flB">Selecciona una calificación</div><input type="hidden" id="frB"/><span class="errmsg" id="e-frB"></span></div>
+            <div class="fg full"><label>Tu opinión *</label><textarea id="b8" rows="2" placeholder="Comparte tu experiencia..." required></textarea><span class="errmsg" id="e-b8"></span></div>
+          </div>
+          <div class="sub-row"><button type="submit" class="btn-sub">Registrar Bufete →</button></div>
+        </form>
+        <!-- FORM INDEPENDIENTE -->
+        <form class="fpanel hid-form" id="fI" onsubmit="sub(event,'i')">
+          <div class="fgrid">
+            <div class="fg"><label>Nombre completo *</label><input id="i1" type="text" placeholder="Lic. Juan Pérez" required/><span class="errmsg" id="e-i1"></span></div>
+            <div class="fg"><label>Cédula profesional *</label><input id="i2" type="text" placeholder="Número de cédula" required/><span class="errmsg" id="e-i2"></span></div>
+            <div class="fg"><label>Especialidad *</label><select id="i3" required><option value="">Seleccionar...</option><option>Derecho Civil</option><option>Derecho Penal</option><option>Derecho Familiar</option><option>Derecho Laboral</option><option>Derecho Fiscal</option><option>Derecho Mercantil</option><option>Derecho Corporativo</option><option>Derechos Humanos</option><option>Derecho Inmobiliario</option></select><span class="errmsg" id="e-i3"></span></div>
+            <div class="fg"><label>Años de experiencia *</label><input id="i4" type="number" min="0" placeholder="10" required/><span class="errmsg" id="e-i4"></span></div>
+            <div class="fg"><label>Correo electrónico *</label><input id="i5" type="email" placeholder="abogado@correo.com" required/><span class="errmsg" id="e-i5"></span></div>
+            <div class="fg"><label>Teléfono *</label><input id="i6" type="tel" placeholder="10 dígitos" pattern="[0-9]{10}" required/><span class="errmsg" id="e-i6"></span></div>
+            <div class="fg full"><label>Biografía profesional *</label><textarea id="i7" rows="3" placeholder="Describe tu experiencia..." required></textarea><span class="errmsg" id="e-i7"></span></div>
+            <div class="fg full"><label>Tu calificación *</label><div class="fstars-wrap" id="fsI"><span class="fstar" data-v="1">★</span><span class="fstar" data-v="2">★</span><span class="fstar" data-v="3">★</span><span class="fstar" data-v="4">★</span><span class="fstar" data-v="5">★</span></div><div class="fstar-lbl" id="flI">Selecciona una calificación</div><input type="hidden" id="frI"/><span class="errmsg" id="e-frI"></span></div>
+            <div class="fg full"><label>Tu opinión *</label><textarea id="i8" rows="2" placeholder="Comparte tu experiencia..." required></textarea><span class="errmsg" id="e-i8"></span></div>
+          </div>
+          <div class="sub-row"><button type="submit" class="btn-sub">Registrar Perfil →</button></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section class="sec" id="nosotros" style="background:var(--deep)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-lbl"><span class="lbl-n">03</span><span class="lbl-line"></span><span class="lbl-txt">Acerca del proyecto</span></div>
+      <h2 class="sec-ttl">¿Qué es <em>AbogadosMX</em>?</h2>
+    </div>
+    <div class="about-grid">
+      <div class="acard"><div class="a-num">01</div><div class="a-ico">🎯</div><h3>Misión</h3><p>Organizar la información profesional de abogados mediante una interfaz interactiva, accesible y responsiva que muestre su efectividad real.</p></div>
+      <div class="acard"><div class="a-num">02</div><div class="a-ico">🔭</div><h3>Visión</h3><p>Consolidarnos como la herramienta digital más confiable para la consulta y evaluación de servicios legales en México.</p></div>
+      <div class="acard"><div class="a-num">03</div><div class="a-ico">⚙</div><h3>Tecnología</h3><p>Desarrollado con HTML semántico, CSS responsivo con media queries y JavaScript puro. Sin frameworks ni dependencias externas.</p></div>
+      <div class="acard"><div class="a-num">04</div><div class="a-ico">🛡</div><h3>Calidad</h3><p>Validado con estándares W3C, probado en Chrome, Firefox y Edge. Contraste WCAG AA y carga menor a 3 segundos.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="logo"><span class="logo-icon">⚖</span><div><div class="logo-name">Abogados<em>MX</em></div><div style="font-size:.68rem;color:var(--silver);margin-top:.1rem">Proyecto Académico · UniverMilenium · Grupo 801</div></div></div>
+    <p class="foot-copy">© 2025 Jonathan Mizraim Olvera Díaz · Gestión de Proyectos Informáticos</p>
+    <nav class="foot-links"><a href="#inicio">Inicio</a><a href="#directorio">Directorio</a><a href="#registro">Registro</a><a href="#nosotros">Nosotros</a></nav>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="ovl" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script>
+/* AbogadosMX — JS · Jonathan Mizraim Olvera Díaz · Grupo 801 */
+
+// Custom cursor
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.card,.hst').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';curR.style.width='50px';curR.style.height='50px'});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';curR.style.width='36px';curR.style.height='36px'});
+});
+
+// Scroll progress + nav
+window.addEventListener('scroll',()=>{
+  const p=(scrollY/(document.body.scrollHeight-innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  document.getElementById('navBar').classList.toggle('scrolled',scrollY>50);
+});
+
+// Smooth scroll
+function goto(id){document.querySelector(id).scrollIntoView({behavior:'smooth'})}
+
+// Mobile nav
+function toggleNav(){document.getElementById('mobNav').classList.toggle('open')}
+
+// Cards reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((en,i)=>{
+    if(en.isIntersecting){en.target.style.animationDelay=(i*.07)+'s';en.target.classList.add('vis');obs.unobserve(en.target)}
+  });
+},{threshold:.15});
+document.querySelectorAll('.card').forEach(c=>obs.observe(c));
+
+// Stats counter
+const sObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){
+    document.querySelectorAll('.hst-n').forEach(el=>{
+      const t=+el.dataset.t,s=el.dataset.s;
+      let n=0;const step=t/60;
+      const id=setInterval(()=>{n=Math.min(n+step,t);el.textContent=Math.floor(n)+s;if(n>=t)clearInterval(id)},16);
+    });
+    sObs.disconnect();
+  }
+},{threshold:.5});
+const hs=document.querySelector('.hero-stats');if(hs)sObs.observe(hs);
+
+// Card stars
+document.querySelectorAll('.stars').forEach(c=>{
+  const id=c.dataset.id,stars=c.querySelectorAll('.s');
+  let cur=[...stars].filter(s=>s.classList.contains('on')).length;
+  stars.forEach(s=>{
+    s.addEventListener('mouseenter',()=>{const v=+s.dataset.v;stars.forEach(x=>x.classList.toggle('on',+x.dataset.v<=v))});
+    s.addEventListener('mouseleave',()=>{stars.forEach(x=>x.classList.toggle('on',+x.dataset.v<=cur))});
+    s.addEventListener('click',()=>{
+      cur=+s.dataset.v;stars.forEach(x=>x.classList.toggle('on',+x.dataset.v<=cur));
+      const el=document.getElementById('sc-'+id);if(el)el.textContent=cur+'.0 / 5.0';
+      toast('Calificación de '+cur+' estrella'+(cur>1?'s':'')+' registrada ✓');
+    });
+  });
+});
+
+// Filter
+function filtrar(tipo,btn){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.querySelectorAll('.card').forEach(c=>{
+    const show=tipo==='todos'||c.dataset.tipo===tipo;
+    c.style.display=show?'':'none';
+    if(show){c.style.animation='none';void c.offsetWidth;c.style.animation='cIn .5s cubic-bezier(.22,1,.36,1) both'}
+  });
+}
+
+// Reg tabs
+function switchTab(t,btn){
+  document.querySelectorAll('.rtab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.getElementById('fB').classList.toggle('hid-form',t!=='b');
+  document.getElementById('fI').classList.toggle('hid-form',t!=='i');
+}
+
+// Form stars
+const rl=['','Muy malo','Regular','Aceptable','Bueno','¡Excelente!'];
+function initFS(cId,iId,lId){
+  const c=document.getElementById(cId),inp=document.getElementById(iId),lbl=document.getElementById(lId);
+  if(!c)return;
+  const ss=c.querySelectorAll('.fstar');
+  ss.forEach(s=>{
+    s.addEventListener('mouseenter',()=>{const v=+s.dataset.v;ss.forEach(x=>x.classList.toggle('on',+x.dataset.v<=v));lbl.textContent=rl[v]});
+    s.addEventListener('mouseleave',()=>{const sel=inp.value?+inp.value:0;ss.forEach(x=>x.classList.toggle('on',+x.dataset.v<=sel));lbl.textContent=sel?rl[sel]:'Selecciona una calificación'});
+    s.addEventListener('click',()=>{const v=+s.dataset.v;inp.value=v;ss.forEach(x=>x.classList.toggle('on',+x.dataset.v<=v));lbl.textContent=rl[v]});
+  });
+}
+initFS('fsB','frB','flB');initFS('fsI','frI','flI');
+
+// Validate
+function vf(id,eid,msg){
+  const el=document.getElementById(id),er=document.getElementById(eid);
+  const ok=el.checkValidity()&&el.value.trim()!=='';
+  el.classList.toggle('err',!ok);if(er)er.textContent=ok?'':msg;return ok;
+}
+
+// Submit
+function sub(e,t){
+  e.preventDefault();let ok=true;
+  if(t==='b'){
+    ok&=vf('b1','e-b1','Nombre requerido.');ok&=vf('b2','e-b2','Selecciona especialidad.');
+    ok&=vf('b3','e-b3','Ciudad requerida.');ok&=vf('b4','e-b4','Teléfono de 10 dígitos.');
+    ok&=vf('b5','e-b5','Correo válido.');ok&=vf('b7','e-b7','Descripción requerida.');
+    ok&=vf('b8','e-b8','Opinión requerida.');
+    const r=document.getElementById('frB').value,re=document.getElementById('e-frB');
+    if(!r){re.textContent='Selecciona calificación.';ok=false}else re.textContent='';
+    if(!ok){toast('Corrige los campos marcados.',true);return}
+    const n=document.getElementById('b1').value;
+    document.getElementById('fB').reset();
+    document.querySelectorAll('#fsB .fstar').forEach(s=>s.classList.remove('on'));
+    document.getElementById('flB').textContent='Selecciona una calificación';
+    toast('"'+n+'" registrado exitosamente ✓');
+  } else {
+    ok&=vf('i1','e-i1','Nombre requerido.');ok&=vf('i2','e-i2','Cédula requerida.');
+    ok&=vf('i3','e-i3','Selecciona especialidad.');ok&=vf('i4','e-i4','Años requeridos.');
+    ok&=vf('i5','e-i5','Correo válido.');ok&=vf('i6','e-i6','Teléfono de 10 dígitos.');
+    ok&=vf('i7','e-i7','Biografía requerida.');ok&=vf('i8','e-i8','Opinión requerida.');
+    const r=document.getElementById('frI').value,re=document.getElementById('e-frI');
+    if(!r){re.textContent='Selecciona calificación.';ok=false}else re.textContent='';
+    if(!ok){toast('Corrige los campos marcados.',true);return}
+    const n=document.getElementById('i1').value;
+    document.getElementById('fI').reset();
+    document.querySelectorAll('#fsI .fstar').forEach(s=>s.classList.remove('on'));
+    document.getElementById('flI').textContent='Selecciona una calificación';
+    toast('"'+n+'" registrado exitosamente ✓');
+  }
+}
+
+// Modal
+function openModal(tipo,nombre,cal,esp){
+  let stars='';for(let i=1;i<=5;i++)stars+=i<=Math.round(cal)?'★':'☆';
+  document.getElementById('mBody').innerHTML=`
+    <div class="modal-tag">${tipo==='bufete'?'Bufete de Abogados':'Abogado Independiente'}</div>
+    <h3 class="modal-name">${nombre}</h3>
+    <p class="modal-esp">${esp}</p>
+    <div class="modal-stars">${stars}</div>
+    <div class="modal-score">${cal.toFixed(1)} / 5.0 — Calificación promedio</div>
+    <div class="modal-hr"></div>
+    <p class="modal-desc">Este perfil está verificado en el directorio de <strong>AbogadosMX</strong>. Para más información o contacto, utiliza el formulario de registro o comunícate directamente con el despacho.</p>
+    <p class="modal-note">⚠ Proyecto académico · Los datos presentados son demostrativos</p>`;
+  document.getElementById('ovl').classList.add('open');document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('ovl').classList.remove('open');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+// Toast
+function toast(msg,err=false){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.borderLeftColor=err?'#ef4444':'var(--gold)';
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// Owl eyes follow cursor
+document.addEventListener('mousemove', e => {
+  const owlEl = document.getElementById('owl');
+  if (!owlEl) return;
+  const rect = owlEl.getBoundingClientRect();
+  const owlCX = rect.left + rect.width / 2;
+  const owlCY = rect.top + rect.height / 2;
+  const angle = Math.atan2(e.clientY - owlCY, e.clientX - owlCX);
+  const dist = 2.5;
+  const ex = Math.cos(angle) * dist;
+  const ey = Math.sin(angle) * dist;
+  // Move SVG pupils
+  const pL = document.getElementById('pupilL');
+  const pR = document.getElementById('pupilR');
+  const iL = document.getElementById('irisL');
+  const iR = document.getElementById('irisR');
+  if (pL) { pL.setAttribute('cx', 44 + ex); pL.setAttribute('cy', 57 + ey); }
+  if (pR) { pR.setAttribute('cx', 66 + ex); pR.setAttribute('cy', 57 + ey); }
+  if (iL) { iL.setAttribute('cx', 44 + ex * .6); iL.setAttribute('cy', 57 + ey * .6); }
+  if (iR) { iR.setAttribute('cx', 66 + ex * .6); iR.setAttribute('cy', 57 + ey * .6); }
+  // Head tilt
+  const head = document.getElementById('owlHead');
+  if (head) {
+    const tilt = Math.max(-15, Math.min(15, (e.clientX - owlCX) / 35));
+    head.style.transformOrigin = '55px 60px';
+    head.style.transform = `rotate(${tilt}deg)`;
+  }
+});
+</script>
+
+<!-- OWL (SVG — always renders correctly) -->
+<div id="owl">
+  <svg id="owlSvg" width="110" height="160" viewBox="0 0 110 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Perch -->
+    <rect x="5" y="152" width="100" height="7" rx="3.5" fill="url(#perchGrad)"/>
+    <!-- Feet -->
+    <g id="feet">
+      <!-- left foot -->
+      <line x1="38" y1="142" x2="30" y2="153" stroke="#3a2a10" stroke-width="3" stroke-linecap="round"/>
+      <line x1="38" y1="142" x2="37" y2="153" stroke="#3a2a10" stroke-width="3" stroke-linecap="round"/>
+      <line x1="38" y1="142" x2="44" y2="153" stroke="#3a2a10" stroke-width="3" stroke-linecap="round"/>
+      <!-- right foot -->
+      <line x1="72" y1="142" x2="66" y2="153" stroke="#3a2a10" stroke-width="3" stroke-linecap="round"/>
+      <line x1="72" y1="142" x2="73" y2="153" stroke="#3a2a10" stroke-width="3" stroke-linecap="round"/>
+      <line x1="72" y1="142" x2="80" y2="153" stroke="#3a2a10" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <!-- Wings -->
+    <g id="wingL" style="transform-origin:28px 80px">
+      <path d="M28 72 Q10 85 12 115 Q16 128 28 130 L28 72Z" fill="url(#wingGrad)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+    </g>
+    <g id="wingR" style="transform-origin:82px 80px">
+      <path d="M82 72 Q100 85 98 115 Q94 128 82 130 L82 72Z" fill="url(#wingGrad)" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+    </g>
+    <!-- Body -->
+    <ellipse cx="55" cy="108" rx="30" ry="36" fill="url(#bodyGrad)" stroke="rgba(201,168,76,0.25)" stroke-width="1.5"/>
+    <!-- Belly pattern -->
+    <ellipse cx="55" cy="115" rx="18" ry="22" fill="url(#bellyGrad)" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+    <!-- Head -->
+    <g id="owlHead">
+      <!-- Ear tufts -->
+      <path d="M36 52 Q32 38 38 30 Q42 42 40 52Z" fill="#1a1208" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+      <path d="M74 52 Q78 38 72 30 Q68 42 70 52Z" fill="#1a1208" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+      <!-- Head circle -->
+      <ellipse cx="55" cy="60" rx="28" ry="26" fill="url(#headGrad)" stroke="rgba(201,168,76,0.25)" stroke-width="1.5"/>
+      <!-- Facial disc -->
+      <ellipse cx="55" cy="62" rx="21" ry="19" fill="url(#discGrad)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+      <!-- Left eye white -->
+      <circle cx="44" cy="57" r="9" fill="#F0EDE8" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+      <!-- Right eye white -->
+      <circle cx="66" cy="57" r="9" fill="#F0EDE8" stroke="rgba(201,168,76,0.4)" stroke-width="1.5"/>
+      <!-- Left iris -->
+      <circle id="irisL" cx="44" cy="57" r="5.5" fill="url(#irisGrad)"/>
+      <!-- Right iris -->
+      <circle id="irisR" cx="66" cy="57" r="5.5" fill="url(#irisGrad)"/>
+      <!-- Left pupil -->
+      <circle id="pupilL" cx="44" cy="57" r="2.5" fill="#050505"/>
+      <!-- Right pupil -->
+      <circle id="pupilR" cx="66" cy="57" r="2.5" fill="#050505"/>
+      <!-- Eye shines -->
+      <circle cx="47" cy="54" r="1.8" fill="rgba(255,255,255,0.9)"/>
+      <circle cx="69" cy="54" r="1.8" fill="rgba(255,255,255,0.9)"/>
+      <!-- Beak -->
+      <path d="M50 68 L55 76 L60 68 Z" fill="#C9A84C" opacity="0.9"/>
+    </g>
+    <!-- Eyelid overlays for blink (animated via CSS) -->
+    <rect id="blinkL" x="35" y="48" width="18" height="18" rx="9" fill="#1a1208" transform="scaleY(0)" style="transform-origin:44px 57px"/>
+    <rect id="blinkR" x="57" y="48" width="18" height="18" rx="9" fill="#1a1208" transform="scaleY(0)" style="transform-origin:66px 57px"/>
+    <!-- Defs -->
+    <defs>
+      <radialGradient id="bodyGrad" cx="40%" cy="35%">
+        <stop offset="0%" stop-color="#2a1f0e"/>
+        <stop offset="100%" stop-color="#0e0b05"/>
+      </radialGradient>
+      <radialGradient id="headGrad" cx="40%" cy="35%">
+        <stop offset="0%" stop-color="#2e2210"/>
+        <stop offset="100%" stop-color="#1a1208"/>
+      </radialGradient>
+      <radialGradient id="discGrad" cx="50%" cy="50%">
+        <stop offset="0%" stop-color="#241a0c"/>
+        <stop offset="100%" stop-color="#1a1208"/>
+      </radialGradient>
+      <radialGradient id="bellyGrad" cx="50%" cy="40%">
+        <stop offset="0%" stop-color="rgba(201,168,76,0.2)"/>
+        <stop offset="100%" stop-color="rgba(201,168,76,0.05)"/>
+      </radialGradient>
+      <radialGradient id="irisGrad" cx="35%" cy="30%">
+        <stop offset="0%" stop-color="#c9a84c"/>
+        <stop offset="50%" stop-color="#7a5c1e"/>
+        <stop offset="100%" stop-color="#2a1a06"/>
+      </radialGradient>
+      <linearGradient id="wingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#1e1509"/>
+        <stop offset="100%" stop-color="#0e0b05"/>
+      </linearGradient>
+      <linearGradient id="perchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="transparent"/>
+        <stop offset="20%" stop-color="rgba(201,168,76,0.3)"/>
+        <stop offset="50%" stop-color="rgba(201,168,76,0.6)"/>
+        <stop offset="80%" stop-color="rgba(201,168,76,0.3)"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <div class="owl-tip">¡Hola! Soy Lex 🦉</div>
+</div>
+
+<style>
+#owl{
+  position:fixed;bottom:0;left:2.5rem;z-index:700;
+  cursor:none;
+  animation:owlBob 3s ease-in-out infinite;
+  filter:drop-shadow(0 6px 20px rgba(201,168,76,0.3));
+  display:flex;flex-direction:column;align-items:center;
+}
+#owl:hover{animation:none;transform:translateY(-8px) scale(1.06)}
+@keyframes owlBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Blink */
+#blinkL,#blinkR{animation:blink 5s ease-in-out infinite}
+#blinkR{animation-delay:.08s}
+@keyframes blink{0%,44%,46%,100%{transform:scaleY(0)}45%{transform:scaleY(1)}}
+
+/* Wing flap on hover */
+#wingL{transition:transform .4s cubic-bezier(.22,1,.36,1)}
+#wingR{transition:transform .4s cubic-bezier(.22,1,.36,1)}
+#owl:hover #wingL{transform:rotate(-20deg)}
+#owl:hover #wingR{transform:rotate(20deg)}
+
+/* Glow under feet */
+#owl::after{content:'';display:block;width:70px;height:10px;background:rgba(201,168,76,0.18);border-radius:50%;filter:blur(8px);margin-top:-4px;animation:glow 3s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.5;transform:scaleX(1)}50%{opacity:1;transform:scaleX(1.2)}}
+
+/* Tooltip */
+.owl-tip{
+  position:absolute;bottom:calc(100% + 8px);left:50%;
+  transform:translateX(-50%) scale(.85) translateY(4px);
+  background:var(--panel);border:1px solid var(--border);
+  color:var(--white);font-size:.75rem;font-weight:500;
+  padding:.4rem .9rem;border-radius:4px;white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transition:all .3s cubic-bezier(.22,1,.36,1);
+  font-family:'Outfit',sans-serif;
+}
+.owl-tip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(180,150,80,0.3)}
+#owl:hover .owl-tip{opacity:1;transform:translateX(-50%) scale(1) translateY(-2px)}
+
+@media(max-width:480px){#owl{left:1rem}#owlSvg{width:80px;height:116px}}
+</style>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+
+        "type":"error",
+        "error": {
+
+            "type":"not_found_error",
+            "message":"File not found in container: /mnt/user-data/outputs/abogadosmx/styles.css",
+            "details": {
+                "error_visibility": "user_facing"
+            }
+        }
+
+        ,
+        "request_id":"req_011CYvj6f4XoDzSEd6SdEspP"
+    }
